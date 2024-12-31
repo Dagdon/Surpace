@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpace - Notifications</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/notifications.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="logo">
+                <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+            </div>
+            <nav class="nav-links">
+                <a href="profile.html">Profile</a>
+                <a href="notifications.html" class="active">Notifications</a>
+                <a href="explore.html">Explore</a>
+                <a href="messages.html">Messages</a>
+                <a href="settings.html">Settings</a>
+                <a href="about.html">About</a>
+            </nav>
+        </header>
+
+        <section class="notifications-section">
+            <div class="container">
+                <h2>Notifications</h2>
+                <ul class="notification-list">
+                    <li v-for="notification in notifications" :key="notification.id">
+                        <i class="fas fa-bell"></i> {{ notification.message }}
+                        <span class="timestamp">{{ notification.timestamp }}</span>
+                    </li>
+                </ul>
+                <p v-if="notifications.length === 0" class="no-notifications">You have no new notifications.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                notifications: [
+                    {
+                        id: 1,
+                        message: 'New message from your instructor.',
+                        timestamp: '2 hours ago'
+                    },
+                    {
+                        id: 2,
+                        message: 'Your course "AI & Data Science" has a new update.',
+                        timestamp: '1 day ago'
+                    },
+                    {
+                        id: 3,
+                        message: 'Reminder: Upcoming deadline for "Frontend Development" project.',
+                        timestamp: '3 days ago'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yards - Surpace</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/yards.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logos/surpace.png" alt="Surpace Logo" width="100" height="100">
+        </div>
+        <nav>
+            <a href="profile.html">Profile</a>
+            <a href="explore.html">Explore</a>
+            <a href="shorts.html" class="active">Shorts</a>
+            <a href="messages.html">Messages</a>
+        </nav>
+    </header>
+
+    <section class="yards-section" id="app">
+        <div class="yards-container">
+            <div class="video-card" v-for="video in videos" :key="video.id">
+                <video controls :src="video.url"></video>
+                <h5>{{ video.title }}</h5>
+                <p>{{ video.description }}</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                videos: [
+                    { id: 1, title: 'Frontend Development Overview', description: 'A quick guide to the basics of frontend development.', url: 'assets/videos/frontend.mp4' },
+                    { id: 2, title: 'Backend Development Essentials', description: 'Learn the basics of backend technologies like Node.js.', url: 'assets/videos/backend.mp4' },
+                    { id: 3, title: 'AI Introduction', description: 'Explore the world of Artificial Intelligence and its applications.', url: 'assets/videos/ai.mp4' }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

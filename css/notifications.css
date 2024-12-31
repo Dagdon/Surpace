@@ -1,0 +1,120 @@
+/* Notifications Page CSS for Surpace */
+body {
+    background-color: #f4f6f9; /* Soft neutral background for better readability */
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #004aad; /* Surpace brand blue */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+header .logo img {
+    width: 100px;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a.active {
+    color: #f9f9f9; /* Slightly lighter color for active link */
+}
+
+nav a:hover {
+    color: #ffcc00; /* Gold hover effect for better contrast */
+}
+
+.notifications-section {
+    padding: 40px 20px;
+    background-color: white;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-section h2 {
+    color: #004aad; /* Surpace brand color */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+ul.notification-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.notification-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #eef3fa; /* Light blue-gray for a clean look */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+ul.notification-list li:hover {
+    background-color: #d9e8fc; /* Subtle highlight on hover */
+    transform: translateX(10px); /* Smooth shift effect */
+}
+
+ul.notification-list li i {
+    font-size: 22px;
+    color: #42b72a; /* Green for a positive visual cue */
+    margin-right: 15px;
+}
+
+ul.notification-list li .timestamp {
+    font-size: 0.85rem;
+    color: #707070;
+    margin-left: auto; /* Align timestamp to the right */
+}
+
+.no-notifications {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #004aad; /* Surpace brand blue */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #ffcc00; /* Gold hover effect */
+}
+
+footer .social-icons a:active {
+    color: #ff9900; /* Slightly darker gold for active state */
+}

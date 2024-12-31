@@ -1,0 +1,233 @@
+/* Header Section */
+.header {
+    background-color: linear-gradient(to right, #007bff, #6610f2);
+    color: #f4f4f4;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffcc00;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.header .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links a {
+    color: white;
+    background-color: #6610f2;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.header .nav-links a:hover {
+    color: #ffcc00;
+    background-color: #ddd;
+}
+
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0A5717;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.header .search-bar {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.header .search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.header .search-bar button {
+    padding: 10px 15px;
+    border: none;
+    background: #e6b800;
+    color: #f4f4f4;
+    font-size: 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.header .search-bar button:hover {
+    background: #0A5717;
+    color: #f4f4f4;
+    font-weight: bold;
+}
+
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #007bff, #6610f2);
+  color: white;
+  padding: 60px 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero .btn-light {
+  color: #6610f2;
+  background-color: white;
+  border: 2px solid #6610f2;
+  font-weight: bold;
+}
+
+.courses .card {
+  border: 1px solid #6610f2;
+}
+
+.courses .card-title {
+  color: #6610f2;
+  font-weight: bold;
+}
+
+.community {
+  padding: 50px 0;
+}
+
+/* Footer Section */
+.footer {
+    background: linear-gradient(to right, #055ebd, #055ebd);
+    color: #f4f4f4;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #ffcc00;
+}
+
+.footer .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer .social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #ffcc00;
+    transform: scale(1.2);
+}
+
+.footer-links {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    color: #ddd;
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header .search-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .header .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0A5717;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.header .search-bar {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.header .search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.header .search-bar button {
+    padding: 10px 15px;
+    border: none;
+    background: #e6b800;
+    color: #f4f4f4;
+    font-size: 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.header .search-bar button:hover {
+    background: #0A5717;
+    color: #f4f4f4;
+    font-weight: bold;
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpace - Learn & Scale</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/landing.css">
+    <script src="js/landing.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo"></img></div>
+        <!-- Hamburger Icon (visible on small screens) -->
+        <div class="hamburger" id="hamburger-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="nav-links">
+            <a href="learn-more" a class="nav-link">Learn More</a>
+            <a href="courses" a class="nav-link">Courses</a>
+            <a href="sign-up" a class="btn btn-primary">Sign Up</a>
+            <a href="about" a class="nav-link">About</a>
+            <a href="contact" a class="nav-link">Contact</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for courses or topics..." aria-label="Search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <div id="landing-page">
+        <!-- Hero Section -->
+        <section class="hero-section bg-primary text-white text-center py-5">
+            <div class="container">
+                <h1>Welcome to Surpace</h1>
+                <p>Unlock Your Learning Potential with Top Tech & Professional Courses</p>
+                <a href="#cta" class="btn btn-light btn-lg">Start Learning</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Why Choose Surpace?</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="feature-box text-center">
+                            <i class="bi bi-brush"></i>
+                            <h4>Tailored Learning</h4>
+                            <p>Courses designed to suit your career goals, including coding, AI, and data science.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-box text-center">
+                            <i class="bi bi-currency-dollar"></i>
+                            <h4>Affordable Courses</h4>
+                            <p>Quality learning at prices that won’t break your budget. Access the best courses at competitive rates.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-box text-center">
+                            <i class="bi bi-people"></i>
+                            <h4>Engaged Community</h4>
+                            <p>Collaborate, share insights, and network with fellow learners and professionals in your field.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Categories Section -->
+        <section class="courses-section bg-light py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Explore Our Courses</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="course-card text-center">
+                            <img src="assets/images/frontend.jpg" class="img-fluid" alt="Frontend Development">
+                            <h5>Frontend Development</h5>
+                            <p>Master HTML, CSS, JavaScript, and modern frameworks like Vue.js, React.js, React Native, Java/Swift, Flutter/Dart, C, Java, Swift and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="course-card text-center">
+                            <img src="assets/images/backend.jpg" class="img-fluid" alt="Backend Development">
+                            <h5>Backend Development</h5>
+                            <p>Learn the fundamentals of server-side programming with Node.js, Express, PHP, SQL, Django/Flask and database storage.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="course-card text-center">
+                            <img src="assets/images/ai.jpg" class="img-fluid" alt="AI & Data Science">
+                            <h5>AI & Data Science</h5>
+                            <p>Unlock the power of AI and machine learning with practical applications project in data science, software engineering and building portfolio.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="course-card text-center">
+                            <img src="assets/images/business.jpg" class="img-fluid" alt="Business & Entrepreneurship">
+                            <h5>Business & Entrepreneurship</h5>
+                            <p>Acquire the skills you need to excel in the world of business and startups.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+    <section class="dashboard py-5 bg-light">
+        <div class="container">
+          <h2 class="text-center mb-4">Your Learning Dashboard</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Active Courses</h4>
+              <ul class="list-group">
+                <li class="list-group-item" v-for="course in activeCourses" :key="course.id">
+                  {{ course.title }}
+                  <span class="badge bg-primary float-end">{{ course.progress }}% Complete</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h4>Achievements</h4>
+              <div class="d-flex flex-wrap">
+                <div class="badge bg-success m-2" v-for="badge in achievements" :key="badge.id">{{ badge.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Community Section -->
+      <section class="community bg-primary text-white py-5">
+        <div class="container text-center">
+          <h2>Join the Surpace Community</h2>
+          <p>Connect with fellow ALX students to share insights, collaborate on projects, and grow together.</p>
+          <a href="#" class="btn btn-light btn-lg">Explore Forums</a>
+        </div>
+      </section>
+  
+      <!-- Webinars Section -->
+      <section class="webinars py-5">
+        <div class="container">
+          <h2 class="text-center mb-4">Upcoming Webinars</h2>
+          <div class="row">
+            <div class="col-md-4" v-for="webinar in webinars" :key="webinar.id">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ webinar.title }}</h5>
+                  <p class="card-text">Date: {{ webinar.date }}<br>Speaker: {{ webinar.speaker }}</p>
+                  <a href="#" class="btn btn-primary">Register</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Call to Action (CTA) Section -->
+        <section id="cta" class="cta-section text-white text-center py-5 bg-dark">
+            <div class="container">
+                <h2>Start Your Learning Journey Today</h2>
+                <p>Join millions of Students in Alx through Surpace and take the next step in your career's journey.</p>
+                <a href="signup.html" class="btn btn-light btn-lg">Get Started</a>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer bg-light py-4">
+            <div class="container text-center">
+                <div class="footer">
+                    <div class="logo"><img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo"></img></div>
+                    <div class="social-icons">
+                        <a href="https://Facebook.com/surpacelearn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twiiter.com/surpacelearn" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://Instagram.com/surpacelearn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://LinkedIn.com/company/surpacelearn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="aboutus.html">About Us</a>
+                        <a href="tc.html">Terms & Conditions</a>
+                        <a href="support.html">Support</a>
+                        <a href="pp.html">Privacy Policy</a>
+                    </div>
+                    <div class="footer-copyright">
+                        &copy; 2024 Surpace. All rights reserved.
+                    </div>
+                </div>                
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/landing.js"></script>
+</body>
+<script>
+    // JavaScript to toggle the mobile navigation menu
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburgerIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("active"); // Toggle the navigation links visibility
+        document.querySelector(".mobile-nav").classList.toggle("active");
+    });
+</script>
+
+</html>
