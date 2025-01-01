@@ -6,35 +6,35 @@
     <title>Sign Up - Surpace</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/signup.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <!-- Navigation Header -->
     <header>
         <div class="logo">
             <img src="assets/logos/surpace.png" alt="Surpace Logo" width="100" height="100">
         </div>
     </header>
 
-    <!-- Sign-Up Section -->
-    <section class="signup-section">
+    <section class="signup-section" id="app">
         <div class="signup-container">
             <h2>Create Your Account</h2>
-            <form action="#" method="POST">
+            <form @submit.prevent="handleSubmit">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <input type="text" id="name" v-model="name" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <input type="email" id="email" v-model="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <input type="password" id="password" v-model="password" placeholder="Create a password" required>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                    <input type="password" id="confirm-password" v-model="confirmPassword" placeholder="Confirm your password" required>
                 </div>
                 <button type="submit" class="submit-btn">Sign Up</button>
             </form>
@@ -42,7 +42,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -51,5 +50,42 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </footer>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+            },
+            methods: {
+                async handleSubmit() {
+                    // Basic validation
+                    if (this.password !== this.confirmPassword) {
+                        alert("Passwords do not match!");
+                        return;
+                    }
+
+                    const formData = {
+                        name: this.name,
+                        email: this.email,
+                        password: this.password
+                    };
+
+                    try {
+                        const response = await axios.post("http://localhost:5000/api/signup", formData);
+                        alert("Sign up successful!");
+                        // You can redirect to the login page or do something else after success
+                        window.location.href = "login.html";  // Redirect to login page
+                    } catch (error) {
+                        console.error("Error signing up:", error);
+                        alert("There was an error during signup. Please try again.");
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
