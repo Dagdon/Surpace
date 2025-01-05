@@ -1,0 +1,216 @@
+/* Messages Page CSS for Surpace */
+body {
+    background-color: #f4f4f4; /* Light gray background matching Surpace's theme */
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0A5717; /* Surpace brand color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    width: 80px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+}
+
+nav a.active {
+    background-color: #E6B800; /* Surpace brand accent color */
+    color: #0A5717;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: white; /* White background on hover */
+    color: #0A5717; /* Surpace brand color */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.messages-section {
+    padding: 40px 20px;
+    background-color: white;
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.messages-section h2 {
+    color: #0A5717; /* Surpace brand color */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.message-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.message-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.message-card h5 {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold; /* Increased text visibility */
+}
+
+.message-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6; /* Improve text readability */
+}
+
+.message-card .timestamp {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+footer {
+    background-color: #0A5717; /* Surpace brand color */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #E6B800; /* Surpace brand accent color */
+    transform: scale(1.2);
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    color: #ddd;
+}
+
+/* Improved Visibility and Interactivity for Input Area */
+.chat-input {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #0A5717; /* Bold Surpace brand color for separation */
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.chat-input input {
+    padding: 12px 20px;
+    border: 2px solid #0A5717; /* Strong border using Surpace brand color */
+    border-radius: 8px;
+    flex: 1;
+    margin-right: 15px;
+    font-size: 1.1rem;
+    font-weight: bold; /* Bold text inside input */
+    background-color: #f9f9f9; /* Light background for visibility */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Light shadow for prominence */
+    color: #333; /* Darker text color for better contrast */
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: #E6B800; /* Accent color on focus */
+    box-shadow: 0 0 8px rgba(230, 184, 0, 0.5); /* Soft glowing effect for focus */
+}
+
+.chat-input button {
+    padding: 12px 20px;
+    background-color: #E6B800; /* Surpace brand accent color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold; /* Bold text for button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Button shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: #0A5717; /* Surpace brand color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 10px 5px;
+    }
+
+    .messages-section {
+        padding: 30px 20px;
+    }
+
+    .messages-section h2 {
+        font-size: 2rem;
+    }
+
+    .messages-section p {
+        font-size: 1rem;
+    }
+
+    footer .social-icons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    footer .social-icons a {
+        font-size: 1.2rem;
+    }
+
+    .chat-input input {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .chat-input button {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+}

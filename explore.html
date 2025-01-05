@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpace - Explore</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/explore.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> <!-- Include Vue.js -->
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo"></div>
+        <nav class="nav-links">
+            <a href="profile.html">Profile</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="explore.html" class="active">Explore</a>
+            <a href="messages.html">Messages</a>
+            <a href="settings.html">Settings</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div id="app"> <!-- Vue.js root element -->
+        <section class="explore-section">
+            <div class="container">
+                <h2>Explore Courses</h2>
+                <div class="course-list">
+                    <div class="course-card" v-for="course in courses" :key="course.id">
+                        <img :src="course.image" :alt="course.title">
+                        <h5>{{ course.title }}</h5>
+                        <p>{{ course.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                courses: [
+                    {
+                        id: 1,
+                        title: 'Frontend Development',
+                        description: 'Learn HTML, CSS, JavaScript, and modern frameworks like React, Vue.js.',
+                        image: 'assets/images/frontend.jpg'
+                    },
+                    {
+                        id: 2,
+                        title: 'Backend Development',
+                        description: 'Master server-side programming with Node.js, PHP, and more.',
+                        image: 'assets/images/backend.jpg'
+                    },
+                    {
+                        id: 3,
+                        title: 'AI & Data Science',
+                        description: 'Build skills in machine learning and data analysis with practical projects.',
+                        image: 'assets/images/ai.jpg'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

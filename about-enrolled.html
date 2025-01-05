@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpace - About Your Learning Journey</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/about-enrolled.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="logo">
+                <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+            </div>
+            <nav class="nav-links">
+                <a href="profile.html">Profile</a>
+                <a href="explore.html">Explore Courses</a>
+                <a href="messages.html">Messages</a>
+                <a href="resources.html">Resources</a>
+                <a href="about-enrolled.html" class="active">About Your Journey</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+        </header>
+
+        <section class="about-section">
+            <div class="container">
+                <h2>{{ pageTitle }}</h2>
+                <p>{{ pageDescription }}</p>
+
+                <div class="journey-section">
+                    <h3>Your Learning Journey with Surpace</h3>
+                    <p>As an enrolled Surpace learner, you are now part of a community that is dedicated to empowering your learning and career success. Here's how we support you:</p>
+                    <ul>
+                        <li><strong>Personalized Learning Paths:</strong> Based on your goals and aspirations, we tailor course recommendations to help you advance in tech, business, or personal development.</li>
+                        <li><strong>Exclusive Resources:</strong> Access a wide array of exclusive resources like tutorials, webinars, and industry insights to complement your coursework.</li>
+                        <li><strong>Certification and Career Support:</strong> Earn certifications that are recognized by industry leaders. Our career services help guide you through your career transition, whether it’s resume building or job placement assistance.</li>
+                        <li><strong>Community and Networking:</strong> Join an active community of learners, mentors, and professionals to collaborate, share knowledge, and network with others who are on the same journey.</li>
+                    </ul>
+                </div>
+
+                <div class="next-steps-section">
+                    <h3>What's Next in Your Journey?</h3>
+                    <p>As you progress, here are some important next steps to ensure you maximize your learning experience with Surpace:</p>
+                    <ul>
+                        <li><strong>Set Your Learning Goals:</strong> Define clear, achievable learning goals to stay on track and motivated. </li>
+                        <li><strong>Engage with Our Community:</strong> Join discussions, participate in group projects, and attend Surpace webinars to enhance your learning experience.</li>
+                        <li><strong>Monitor Your Progress:</strong> Keep track of your learning achievements and certifications, and share them with potential employers or collaborators.</li>
+                        <li><strong>Explore Advanced Courses:</strong> As you complete introductory courses, continue to explore more advanced topics to stay ahead in your career.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="social-icons">
+                <a v-for="icon in socialIcons" :key="icon.name" :href="icon.link" target="_blank">
+                    <i :class="icon.iconClass"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    pageTitle: "About Your Learning Journey",
+                    pageDescription: "Welcome to Surpace! As an enrolled learner, you are now equipped with the tools, resources, and community support to succeed in your learning journey and career goals.",
+                    socialIcons: [
+                        { name: "Facebook", iconClass: "fab fa-facebook-f", link: "https://www.facebook.com" },
+                        { name: "Twitter", iconClass: "fab fa-twitter", link: "https://www.twitter.com" },
+                        { name: "Instagram", iconClass: "fab fa-instagram", link: "https://www.instagram.com" },
+                        { name: "LinkedIn", iconClass: "fab fa-linkedin-in", link: "https://www.linkedin.com" }
+                    ]
+                };
+            }
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+</html>

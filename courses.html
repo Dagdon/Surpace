@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Surpace</title>
+    <link rel="stylesheet" href="css/courses.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47"></script>
+</head>
+
+<body class="bg-black-50">
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="logo">
+                    <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace Logo">
+                </div>
+                <!-- Hamburger Icon (visible on small screens) -->
+                <div class="hamburger" id="hamburger-icon">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <nav class="nav-links space-x-6">
+                    <a href="landing.html" class="menu">Home</a>
+                    <a href="support.html" class="">Support</a>
+                    <a href="about-us.html" class="about">About</a>
+                    <a href="payment.html" class="payment">Payment</a>
+                    <a href="sign-up.html" class="sign-up">Sign Up</a>
+                    <a href="log-in.html" class="log-in">Log In</a>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for courses or topics..." aria-label="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>        
+            </div>
+        </header>
+
+        <!-- Courses Section -->
+        <section class="courses-section py-10">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-semibold text-gray-800 mb-8">Select Your Course</h2>
+                <div class="course-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <!-- Dynamic Course Cards using Vue.js -->
+                    <div class="course-card bg-white shadow-lg rounded-lg overflow-hidden" v-for="course in courses" :key="course.id">
+                        <img :src="course.image" class="w-full h-56 object-cover" :alt="course.name">
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-4">{{ course.name }}</h4>
+                            <p class="text-gray-600 mb-4">{{ course.description }}</p>
+                            <p class="text-lg font-semibold text-green-600">${{ course.price }}</p>
+                            <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                                @click="selectCourse(course)">Select Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purchase Section -->
+        <section class="purchase-section py-10" v-if="selectedCourse">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-semibold text-gray-800 mb-4">Complete Your Purchase</h2>
+                <div class="mb-6">
+                    <h4 class="text-2xl font-semibold text-gray-800">{{ selectedCourse.name }}</h4>
+                    <p class="text-lg text-gray-600">${{ selectedCourse.price }}</p>
+                </div>
+
+                <!-- Payment Form (Simulation) -->
+                <form @submit.prevent="completePayment" class="space-y-4 max-w-md mx-auto">
+                    <div>
+                        <label for="card-name" class="block text-gray-700">Cardholder's Name</label>
+                        <input type="text" class="form-input mt-2 p-2 w-full rounded border border-gray-300" id="card-name"
+                            v-model="paymentDetails.cardholderName" required>
+                    </div>
+                    <div>
+                        <label for="card-number" class="block text-gray-700">Card Number</label>
+                        <input type="text" class="form-input mt-2 p-2 w-full rounded border border-gray-300" id="card-number"
+                            v-model="paymentDetails.cardNumber" required>
+                    </div>
+                    <button type="submit" class="bg-green-600 text-white py-3 w-full rounded hover:bg-green-700 transition">
+                        Complete Payment
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Ticket Generation Section -->
+        <section class="ticket-section py-10" v-if="ticket">
+            <div class="container mx-auto text-center">
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Payment Successful!</h4>
+                <p class="text-gray-600 mb-4">Your ticket has been generated. Here is your confirmation:</p>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-lg font-semibold text-gray-800">Course: {{ ticket.courseName }}</p>
+                    <p class="text-lg font-semibold text-gray-800">Amount Paid: ${{ ticket.price }}</p>
+                    <p class="text-lg font-semibold text-gray-800">Ticket ID: {{ ticket.ticketId }}</p>
+                    <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition" @click="downloadTicket">
+                        Download Ticket
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container mx-auto text-center">
+                <p>&copy; 2024 Surpace. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Vue.js app initialization
+        const app = Vue.createApp({
+            data() {
+                return {
+                    courses: [
+                        { id: 1, name: 'Frontend Development', description: 'Learn HTML, CSS, JavaScript, React, and more!', price: 199, image: 'assets/images/frontend.jpg' },
+                        { id: 2, name: 'Backend Development', description: 'Learn server-side programming with Node.js, Express, and more!', price: 249, image: 'assets/images/backend.jpg' },
+                        { id: 3, name: 'AI & Data Science', description: 'Master machine learning, data analysis, and AI technologies!', price: 299, image: 'assets/images/ai.jpg' },
+                    ],
+                    selectedCourse: null,
+                    paymentDetails: {
+                        cardholderName: '',
+                        cardNumber: ''
+                    },
+                    ticket: null
+                };
+            },
+            methods: {
+                selectCourse(course) {
+                    this.selectedCourse = course;
+                },
+                completePayment() {
+                    // Simulate successful payment
+                    this.ticket = {
+                        courseName: this.selectedCourse.name,
+                        price: this.selectedCourse.price,
+                        ticketId: 'TICKET-' + Math.random().toString(36).substr(2, 9)
+                    };
+                    this.selectedCourse = null;  // Reset selected course after payment
+                },
+                downloadTicket() {
+                    const ticketData = `
+                        Course: ${this.ticket.courseName}
+                        Amount Paid: $${this.ticket.price}
+                        Ticket ID: ${this.ticket.ticketId}
+                    `;
+                    const blob = new Blob([ticketData], { type: 'text/plain' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'ticket.txt';
+                    link.click();
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

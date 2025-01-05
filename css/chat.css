@@ -1,0 +1,196 @@
+/* Chat Page Styles */
+
+/* Header */
+header {
+    background-color: #0A5717; /* Surpace brand color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    width: 80px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a.active {
+    background-color: #E6B800; /* Surpace brand accent color */
+    color: #0A5717;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #0A5717;
+    transform: scale(1.05);
+}
+
+/* Container */
+.chat-section {
+    padding: 40px 20px;
+    background-color: white;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages List */
+.messages {
+    max-height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start; /* Default: align to left */
+}
+
+/* Sender Message */
+.sent {
+    background-color: #0A5717; /* Surpace brand color */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 1rem;
+    display: inline-block;
+    max-width: 70%;
+    margin-left: auto;
+    text-align: left; /* Left align text for the sender */
+}
+
+/* Receiver Message */
+.received {
+    background-color: #f4f4f4; /* Light gray background for received messages */
+    color: #333;
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 1rem;
+    display: inline-block;
+    max-width: 70%;
+    margin-right: auto;
+    text-align: right; /* Right align text for the receiver */
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.chat-input input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    background-color: #E6B800; /* Surpace brand accent color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #0A5717; /* Surpace brand color */
+    transform: scale(1.05);
+}
+
+/* Timestamp */
+.timestamp {
+    font-size: 0.8rem;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: #0A5717; /* Surpace brand color */
+    color: white;
+    text-align: center;
+    padding: 20px 30px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #E6B800; /* Surpace brand accent color */
+    transform: scale(1.2);
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 10px 5px;
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 20px 15px;
+    }
+
+    footer .social-icons {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    footer .social-icons a {
+        font-size: 1.3rem;
+    }
+}

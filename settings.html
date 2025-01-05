@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile & Settings - Surpace</title>
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47"></script>
+</head>
+<body>
+  <div id="profile-app">
+    <!-- Navbar -->
+    <navbar></navbar>
+
+    <!-- Profile Header -->
+    <section class="profile-header bg-primary text-white py-5">
+      <div class="container text-center">
+        <img :src="user.avatar" alt="Profile Picture" class="rounded-circle mb-3" width="120" height="120">
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.email }}</p>
+      </div>
+    </section>
+
+    <!-- Profile Content -->
+    <div class="container my-5">
+      <div class="row">
+        <!-- Profile Sidebar -->
+        <div class="col-md-4">
+          <ul class="list-group">
+            <li class="list-group-item" @click="activeTab = 'profile'" :class="{active: activeTab === 'profile'}">Edit Profile</li>
+            <li class="list-group-item" @click="activeTab = 'settings'" :class="{active: activeTab === 'settings'}">Account Settings</li>
+            <li class="list-group-item" @click="activeTab = 'notifications'" :class="{active: activeTab === 'notifications'}">Notification Preferences</li>
+          </ul>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="col-md-8">
+          <div v-if="activeTab === 'profile'">
+            <h3>Edit Profile</h3>
+            <form @submit.prevent="updateProfile">
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-control" v-model="user.name">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" v-model="user.email">
+              </div>
+              <div class="mb-3">
+                <label for="avatar" class="form-label">Profile Picture URL</label>
+                <input type="text" id="avatar" class="form-control" v-model="user.avatar">
+              </div>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+          </div>
+
+          <div v-if="activeTab === 'settings'">
+            <h3>Account Settings</h3>
+            <form @submit.prevent="updateSettings">
+              <div class="mb-3">
+                <label for="password" class="form-label">Change Password</label>
+                <input type="password" id="password" class="form-control" v-model="settings.password">
+              </div>
+              <div class="mb-3">
+                <label for="language" class="form-label">Preferred Language</label>
+                <select id="language" class="form-select" v-model="settings.language">
+                  <option value="en">English</option>
+                  <option value="fr">French</option>
+                  <option value="sw">Swahili</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Update Settings</button>
+            </form>
+          </div>
+
+          <div v-if="activeTab === 'notifications'">
+            <h3>Notification Preferences</h3>
+            <form @submit.prevent="updateNotifications">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="courseUpdates" v-model="notifications.courseUpdates">
+                <label class="form-check-label" for="courseUpdates">Course Updates</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="webinarAlerts" v-model="notifications.webinarAlerts">
+                <label class="form-check-label" for="webinarAlerts">Webinar Alerts</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="communityMessages" v-model="notifications.communityMessages">
+                <label class="form-check-label" for="communityMessages">Community Messages</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Preferences</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer></footer>
+  </div>
+
+  <script src="js/settings.js"></script>
+</body>
+</html>

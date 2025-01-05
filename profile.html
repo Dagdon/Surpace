@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Surpace</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="nav-item">Home</a>
+                    <a href="#" class="nav-item">Explore</a>
+                    <a href="#" class="nav-item">Notifications</a>
+                    <a href="#" class="nav-item">Messages</a>
+                    <a href="#" class="nav-item">Settings</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="profile-section">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <img :src="user.avatar" alt="User Avatar" class="avatar">
+                    <button class="edit-avatar-btn" @click="editAvatar">Edit Photo</button>
+                </div>
+                <div class="user-details">
+                    <h1 class="username">{{ user.username }}</h1>
+                    <p class="user-bio">{{ user.bio }}</p>
+                    <div class="user-stats">
+                        <span><strong>{{ user.posts }}</strong> Posts</span>
+                        <span><strong>{{ user.followers }}</strong> Followers</span>
+                        <span><strong>{{ user.following }}</strong> Following</span>
+                    </div>
+                    <button class="btn-primary" @click="editProfile">Edit Profile</button>
+                </div>
+            </div>
+
+            <!-- Highlighted Section -->
+            <div class="highlight-section">
+                <h2>My Highlights</h2>
+                <div class="highlight-carousel">
+                    <div v-for="highlight in highlights" :key="highlight.id" class="highlight-item">
+                        <img :src="highlight.image" alt="Highlight">
+                        <p>{{ highlight.name }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="activity-feed">
+                <h2>Recent Activity</h2>
+                <div v-for="post in posts" :key="post.id" class="post">
+                    <img :src="post.image" alt="Post Image" class="post-image">
+                    <div class="post-details">
+                        <h3 class="post-title">{{ post.title }}</h3>
+                        <p class="post-description">{{ post.description }}</p>
+                        <span class="post-date">{{ post.date }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchases & Recommendations -->
+            <div class="purchases-section">
+                <h2>My Purchases</h2>
+                <div v-for="purchase in purchases" :key="purchase.id" class="purchase-item">
+                    <img :src="purchase.image" alt="Purchase Item" class="purchase-image">
+                    <div class="purchase-details">
+                        <h3 class="purchase-title">{{ purchase.title }}</h3>
+                        <p class="purchase-price">{{ purchase.price }}</p>
+                        <button class="btn-secondary" @click="verifyPurchase(purchase.id)">Verify Again</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p>&copy; 2024 Surpace. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    user: {
+                        avatar: "https://via.placeholder.com/150",
+                        username: "John Doe",
+                        bio: "Creative thinker. Avid explorer. Dreamer on a journey with Surpace. 🌟",
+                        posts: 120,
+                        followers: 5200,
+                        following: 230,
+                    },
+                    highlights: [
+                        { id: 1, name: "Travel", image: "https://via.placeholder.com/100" },
+                        { id: 2, name: "Adventures", image: "https://via.placeholder.com/100" },
+                        { id: 3, name: "Life Moments", image: "https://via.placeholder.com/100" }
+                    ],
+                    posts: [
+                        { id: 1, title: "Exploring New Horizons", description: "Loved visiting the scenic views at the canyon! 🌄", image: "https://via.placeholder.com/150", date: "Posted 2 hours ago" },
+                        { id: 2, title: "Coffee & Chill", description: "Nothing like a warm coffee on a rainy day. ☕", image: "https://via.placeholder.com/150", date: "Posted 1 day ago" }
+                    ],
+                    purchases: [
+                        { id: 1, title: "ALX AiCE", price: "$229.99", image: "https://via.placeholder.com/150" },
+                        { id: 2, title: "ALX Software Development (Frontend)", price: "$329.99", image: "https://via.placeholder.com/150" },
+                        { id: 3, title: "ALX Software Development (Backend)", price: "$329.99", image: "https://via.placeholder.com/150" },
+                        { id: 4, title: "ALX Ventures & Entrepreneurship", price: "$329.99", image: "https://via.placeholder.com/150" }
+                    ]
+                };
+            },
+            methods: {
+                editAvatar() {
+                    alert('Functionality to edit avatar will be added!');
+                },
+                editProfile() {
+                    alert('Functionality to edit profile will be added!');
+                },
+                verifyPurchase(id) {
+                    alert(`Verifying purchase with ID: ${id}`);
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

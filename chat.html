@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpace - Chat</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+        </div>
+        <nav class="nav-links">
+            <a href="profile.html">Profile</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="explore.html">Explore</a>
+            <a href="messages.html">Messages</a>
+            <a href="settings.html">Settings</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <section class="chat-section">
+        <div id="chatApp" class="container">
+            <h2>Chat with {{ currentUser.name }}</h2>
+            <div class="messages">
+                <div v-for="message in messages" :key="message.id" class="message">
+                    <div :class="['message-bubble', message.sender === 'You' ? 'sent' : 'received']">
+                        <p>{{ message.text }}</p>
+                        <span class="timestamp">{{ message.timestamp }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" v-model="newMessage" placeholder="Type a message" @keydown.enter="sendMessage">
+                <button @click="sendMessage">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <!-- Vue.js app script -->
+    <script src="js/chat.js"></script>
+</body>
+</html>

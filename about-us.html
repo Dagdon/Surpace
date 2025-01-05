@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpace - About</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/about-us.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="logo">
+                <img src="assets/logos/surpace.png" height="100" width="100" alt="Surpace's logo">
+            </div>
+            <nav class="nav-links">
+                <a href="profile.html">Profile</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="explore.html">Explore</a>
+                <a href="messages.html">Messages</a>
+                <a href="settings.html">Settings</a>
+                <a href="about.html" class="active">About</a>
+            </nav>
+        </header>
+
+        <section class="about-section">
+            <div class="container">
+                <h2>{{ pageTitle }}</h2>
+                <p>{{ pageDescription }}</p>
+
+                <div class="values-section">
+                    <h3>Our Mission & Vision</h3>
+                    <p><strong>Mission:</strong> {{ mission }}</p>
+                    <p><strong>Vision:</strong> {{ vision }}</p>
+                </div>
+
+                <div class="offerings-section">
+                    <h3>What Surpace Offers</h3>
+                    <ul>
+                        <li><strong>Diverse Course Selection:</strong> A curated catalog of top-rated courses in tech, business, and personal development.</li>
+                        <li><strong>Personalized Learning:</strong> Tailored course recommendations to suit individual goals and aspirations.</li>
+                        <li><strong>Seamless Shopping Experience:</strong> A user-friendly interface that makes discovering and purchasing courses a breeze.</li>
+                        <li><strong>Certifications and Career Growth:</strong> Industry-recognized certifications to help you advance in your career.</li>
+                    </ul>
+                </div>
+
+                <div class="values-section">
+                    <h3>Our Core Values</h3>
+                    <ul>
+                        <li v-for="value in values" :key="value">{{ value }}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="social-icons">
+                <a v-for="icon in socialIcons" :key="icon.name" :href="icon.link" target="_blank">
+                    <i :class="icon.iconClass"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    pageTitle: "About Surpace",
+                    pageDescription: "Surpace is more than just an e-commerce platform—it's a gateway to learning and career success. Tailored for aspiring ALX students and professionals, Surpace connects you with the knowledge, tools, and certifications you need to thrive in your career.",
+                    mission: "To empower learners everywhere by providing access to world-class education and tools to help them succeed in their careers and personal growth.",
+                    vision: "To become the global leader in e-learning, cultivating a community of lifelong learners who shape the future.",
+                    values: [
+                        "Innovation in Learning",
+                        "Accessibility for All",
+                        "Commitment to Quality",
+                        "Empowering Professionals Worldwide"
+                    ],
+                    socialIcons: [
+                        { name: "Facebook", iconClass: "fab fa-facebook-f", link: "https://www.facebook.com" },
+                        { name: "Twitter", iconClass: "fab fa-twitter", link: "https://www.twitter.com" },
+                        { name: "Instagram", iconClass: "fab fa-instagram", link: "https://www.instagram.com" },
+                        { name: "LinkedIn", iconClass: "fab fa-linkedin-in", link: "https://www.linkedin.com" }
+                    ]
+                };
+            }
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+</html>

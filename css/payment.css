@@ -1,0 +1,122 @@
+/* Payment Page CSS for Surpace */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header.header {
+    background-color: #0A5717; /* Surpace primary green */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    height: 50px;
+}
+
+header nav a {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+section h2 {
+    color: #0A5717;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+section p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.bg-white {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bg-white h3 {
+    color: #0A5717;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.form-input {
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    border-color: #0A5717;
+    outline: none;
+    box-shadow: 0 0 5px rgba(10, 87, 23, 0.2);
+}
+
+button {
+    background-color: #E6B800; /* Accent yellow */
+    color: white;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #cc9d00;
+    transform: scale(1.05);
+}
+
+footer.footer {
+    background-color: #0A5717;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+
+    .bg-white {
+        padding: 20px;
+    }
+}
