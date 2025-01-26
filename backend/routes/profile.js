@@ -13,10 +13,6 @@ router.get("/profile", (req, res) => {
     res.sendFile(path.join(__dirname, "../../frontend", "profile.html"));
 });
 
-// messages
-// Notifications
-// settings
-
 router.get("/profile", (req, res) => {
     res.sendFile(path.join(__dirname, "../../frontend", "profile.html"));
 });
