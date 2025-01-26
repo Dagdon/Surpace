@@ -1,8 +1,39 @@
 import express from "express";
 import User from "../models/user.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const router = express.Router();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+router.get("/profile", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "profile.html"));
+});
+
+// messages
+// Notifications
+// settings
+
+router.get("/profile", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "profile.html"));
+});
+
+router.get("/messages", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "messages.html"));
+});
+
+router.get("/notifications", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "notifications.html"));
+});
+
+router.get("/settings", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "settings.html"));
+});
+
+
 
 router.put("/edit-profile", authMiddleware, async (req, res) => {
     const { name, email, profilePictureUrl } = req.body;

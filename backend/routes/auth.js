@@ -5,12 +5,16 @@ import crypto from "crypto";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 // import { Router } from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
 import ResetToken from "../models/resetToken.js";
 
 dotenv.config();
 const router = express.Router();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const transporter =  nodemailer.createTransport({
     service: "gmail",
@@ -45,6 +49,17 @@ const transporter =  nodemailer.createTransport({
 //     }
 // });
 
+
+router.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "login.html"));
+  });
+
+
+router.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend", "signup.html"));
+});
+
+
 // Login route to authenticate the user and send back a JWT token
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -67,10 +82,12 @@ router.post("/login", async (req, res) => {
         const payload = { userId: user.id, email: user.email };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        return res.status(200).json({
-            message: "Login successful",
-            token,
-        });
+        // return res.status(200).json({
+        //     message: "Login successful",
+        //     token,
+        // });
+
+        return res.redirect(302, '/api/profile');  // Redirecting to profile page
 
     } catch (error) {
         console.error(error);
@@ -81,11 +98,19 @@ router.post("/login", async (req, res) => {
 
 // Register route
 router.post("/register", async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
+    // console.log("register endpoint hit");
+    // console.log('Received signup data:', { name, email, password, confirmPassword });
+    // console.log('Request Body:', req.body);
+
 
     try {
         // Check if the user already exists
         const existingUser = await User.findOne({ where: { email } });
+
+        if (password !== confirmPassword) {
+            return res.status(400).json({ message: "Passwords do not match" });
+        }
 
         if (existingUser) {
             return res.status(400).json({ message: "Email already exists" });
